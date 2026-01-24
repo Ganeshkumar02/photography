@@ -1,67 +1,66 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const HeroPremium = () => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] overflow-hidden">
-      {/* ✅ Background Image (top safe, crop bottom only) */}
+    <section className="relative w-full h-[75vh] sm:h-[85vh] lg:h-[92vh] overflow-hidden">
+
+      {/* Background */}
       <img
         src="/sliderimage/slider1.jpg"
         alt="Hero"
-        className="absolute inset-0 w-full h-full object-cover object-top"
-        loading="eager"
-        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover object-top scale-105"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/35" />
+      {/* Cinematic Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
 
       {/* Content */}
       <div className="relative z-10 w-full h-full flex items-center justify-center px-4">
         <div className="text-center text-white max-w-5xl">
-          <p className="text-[9px] sm:text-[10px] tracking-[0.45em] uppercase opacity-95">
-            CHITRAGEEK STUDIOS
+
+          <p className="text-[10px] tracking-[0.45em] uppercase opacity-90">
+            PRINCE PHOTOGRAPHY
           </p>
 
-          {/* ✅ Smaller text */}
-          <h1
-            className="mt-4 font-serif uppercase tracking-[0.14em] leading-[1.35]
-            text-[18px] sm:text-[28px] md:text-[36px] lg:text-[42px]"
-          >
-            WE CELEBRATE LIFE WITH PREMIUM PHOTOGRAPHY <br />
-            EXPERIENCE
+          <h1 className="mt-5 font-serif uppercase tracking-[0.18em] leading-[1.4]
+              text-[20px] sm:text-[30px] md:text-[40px] lg:text-[48px]">
+            CRAFTING TIMELESS WEDDING <br /> MEMORIES WITH ELEGANCE
           </h1>
 
-          {/* ✅ Exact Ring Button */}
-          <div className="mt-10 flex justify-center">
+          {/* Premium Button */}
+          <div className="mt-12 flex justify-center">
             <Link
               to="/contact"
               className="shootBtn"
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
             >
-              BOOK A SHOOT
+              BOOK YOUR DATE
 
-              {/* ✅ OUTER thin ring */}
+              {/* Glow Pulse */}
+              <span className="glowPulse" />
+
+              {/* Outer Ring */}
               <span className="ringSvg ringOuter">
-                <svg viewBox="0 0 240 80" preserveAspectRatio="none">
+                <svg viewBox="0 0 240 80">
                   <ellipse
                     cx="120"
                     cy="40"
                     rx="110"
                     ry="30"
                     fill="none"
-                    stroke="rgba(255,255,255,0.55)"
-                    strokeWidth="1.5"
+                    stroke="rgba(255,255,255,0.35)"
+                    strokeWidth="1.2"
                   />
                 </svg>
               </span>
 
-              {/* ✅ INNER thick ring (animated wipe) */}
+              {/* Animated Ring */}
               <span className="ringSvg ringInner">
-                <svg viewBox="0 0 240 80" preserveAspectRatio="none">
+                <svg viewBox="0 0 240 80">
                   <ellipse
                     className={hovered ? "dashAnim" : ""}
                     cx="120"
@@ -69,8 +68,8 @@ const HeroPremium = () => {
                     rx="100"
                     ry="26"
                     fill="none"
-                    stroke="rgba(255,255,255,0.95)"
-                    strokeWidth="2.5"
+                    stroke="white"
+                    strokeWidth="2"
                     strokeLinecap="round"
                   />
                 </svg>
@@ -80,50 +79,63 @@ const HeroPremium = () => {
         </div>
       </div>
 
-      {/* CSS */}
       <style>{`
-        .shootBtn{
-          position:relative;
-          display:inline-flex;
-          align-items:center;
-          justify-content:center;
-          padding:12px 34px;
-          border-radius:999px;
-          font-size:11px;
-          letter-spacing:0.35em;
-          text-transform:uppercase;
-          color:#fff;
-          font-weight:500;
+        .shootBtn {
+          position: relative;
+          padding: 14px 40px;
+          border-radius: 999px;
+          font-size: 11px;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          color: #fff;
+          font-weight: 500;
+          overflow: hidden;
+          transition: all .4s ease;
         }
 
-        .ringSvg{
-          position:absolute;
-          inset:-28px;
-          pointer-events:none;
+        /* Glow pulse */
+        .glowPulse {
+          position: absolute;
+          inset: 0;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+          animation: pulseGlow 2.5s ease-in-out infinite;
+          z-index: -1;
         }
 
-        .ringOuter{
-          inset:-34px;
-          opacity:0.95;
+        @keyframes pulseGlow {
+          0% { opacity: 0.2; transform: scale(0.9); }
+          50% { opacity: 0.5; transform: scale(1.05); }
+          100% { opacity: 0.2; transform: scale(0.9); }
         }
 
-        .ringSvg svg{
-          width:100%;
-          height:100%;
+        .ringSvg {
+          position: absolute;
+          inset: -30px;
+          pointer-events: none;
         }
 
-        /* ✅ EXACT wipe animation like screenshot */
-        .dashAnim{
+        .ringOuter { inset: -36px; opacity: .8; }
+
+        .ringSvg svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        .dashAnim {
           stroke-dasharray: 480;
           stroke-dashoffset: 0;
-          animation: wipeLine 1.3s ease-in-out infinite;
+          animation: wipeLine 1.4s ease-in-out infinite;
         }
 
-        @keyframes wipeLine{
-          0%   { stroke-dashoffset: 0; opacity:1; }
-          60%  { stroke-dashoffset: 420; opacity:1; }
-          90%  { opacity:0; }
-          100% { stroke-dashoffset: 0; opacity:1; }
+        @keyframes wipeLine {
+          0%   { stroke-dashoffset: 0; }
+          60%  { stroke-dashoffset: 420; }
+          100% { stroke-dashoffset: 0; }
+        }
+
+        .shootBtn:hover {
+          transform: scale(1.05);
         }
       `}</style>
     </section>

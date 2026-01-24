@@ -2,28 +2,29 @@ import React from "react";
 
 const MarqueeText = () => {
   return (
-    <section className="w-full bg-white py-0 overflow-hidden">
+    <section className="w-full bg-[#f9f6f1] py-6 overflow-hidden relative">
       <div className="relative w-full">
-        {/* ✅ Line 1 */}
+
+        {/* Line 1 */}
         <div className="marquee marquee--line1">
           <div className="marquee__inner marquee__inner--ltr">
             <span className="marquee__text">
-              - WE CELEBRATE LIFE - WE CELEBRATE LIFE - WE CELEBRATE LIFE -
+              — CAPTURING LOVE STORIES — CINEMATIC WEDDINGS — TIMELESS MEMORIES —
             </span>
             <span className="marquee__text">
-              - WE CELEBRATE LIFE - WE CELEBRATE LIFE - WE CELEBRATE LIFE -
+              — CAPTURING LOVE STORIES — CINEMATIC WEDDINGS — TIMELESS MEMORIES —
             </span>
           </div>
         </div>
 
-        {/* ✅ Line 2 */}
+        {/* Line 2 */}
         <div className="marquee marquee--line2">
           <div className="marquee__inner marquee__inner--rtl">
             <span className="marquee__text marquee__text--light">
-              - WE CELEBRATE LIFE - WE CELEBRATE LIFE - WE CELEBRATE LIFE -
+              — EMOTIONS • MOMENTS • MEMORIES — WEDDING FILMS • PHOTOGRAPHY —
             </span>
             <span className="marquee__text marquee__text--light">
-              - WE CELEBRATE LIFE - WE CELEBRATE LIFE - WE CELEBRATE LIFE -
+              — EMOTIONS • MOMENTS • MEMORIES — WEDDING FILMS • PHOTOGRAPHY —
             </span>
           </div>
         </div>
@@ -34,43 +35,32 @@ const MarqueeText = () => {
           width: 100%;
           overflow: hidden;
           white-space: nowrap;
-          padding: 15px 0;
+          padding: 10px 0;
         }
 
-        /* ✅ EXACT CROSS like SS (only Y shift) */
-        .marquee--line1 {
-          transform: translateY(18px);
-        }
-        .marquee--line2 {
-          transform: translateY(-18px);
-          margin-top: -40px;
-        }
+        .marquee--line1 { transform: translateY(16px); }
+        .marquee--line2 { transform: translateY(-16px); margin-top: -32px; }
 
         .marquee__inner {
           display: inline-flex;
-          align-items: center;
           gap: 3rem;
+          align-items: center;
         }
 
-        .marquee__inner--ltr {
-          animation: marqueeLTR 20s linear infinite;
-        }
-
-        .marquee__inner--rtl {
-          animation: marqueeRTL 20s linear infinite;
-        }
+        .marquee__inner--ltr { animation: marqueeLTR 26s linear infinite; }
+        .marquee__inner--rtl { animation: marqueeRTL 26s linear infinite; }
 
         .marquee__text {
           font-family: serif;
           font-weight: 500;
-          font-size: clamp(48px, 8vw, 140px);
-          letter-spacing: 0.06em;
+          font-size: clamp(42px, 7vw, 130px);
+          letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: #000;
+          color: #111;
         }
 
         .marquee__text--light {
-          color: rgba(0,0,0,0.75);
+          color: rgba(0,0,0,0.35);
         }
 
         @keyframes marqueeLTR {

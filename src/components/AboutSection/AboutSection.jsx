@@ -5,61 +5,57 @@ const AboutSection = () => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="w-full bg-white py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* ✅ LEFT IMAGES */}
-          <div className="relative w-full flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[650px]">
-              {/* bottom image */}
-              <div className="w-full h-[360px] sm:h-[420px] overflow-hidden">
+    <section className="w-full bg-[#f9f6f1] py-28">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+          {/* LEFT IMAGES */}
+          <div className="relative flex justify-center lg:justify-start">
+            <div className="relative w-full max-w-[640px]">
+
+              <div className="w-full h-[380px] sm:h-[440px] overflow-hidden rounded-xl shadow-md">
                 <img
-                  src="/sliderimage/slider2.jpg" // ✅ change
+                  src="/sliderimage/slider2.jpg"
                   alt="about 1"
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                  decoding="async"
+                  className="w-full h-full object-cover object-center scale-105"
                 />
               </div>
 
-              {/* top image */}
-              <div className="absolute top-10 left-16 sm:left-28 w-[75%] h-[230px] sm:h-[270px] rounded-2xl overflow-hidden shadow-lg border border-black/10">
+              <div className="absolute top-12 left-16 sm:left-28 w-[70%] h-[240px] sm:h-[280px] rounded-xl overflow-hidden shadow-2xl border border-white/40">
                 <img
-                  src="/sliderimage/slider1.jpg" // ✅ change
+                  src="/sliderimage/slider1.jpg"
                   alt="about 2"
                   className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                  decoding="async"
                 />
               </div>
             </div>
           </div>
 
-          {/* ✅ RIGHT CONTENT */}
-          <div className="w-full">
+          {/* RIGHT CONTENT */}
+          <div>
             <p className="text-xs tracking-[0.45em] uppercase text-gray-600">
-              ABOUT
+              Our Story
             </p>
 
-            <h2 className="mt-4 text-4xl sm:text-5xl font-serif uppercase tracking-wide leading-[1.15]">
-              PRINCE <br /> STUDIOS
+            <h2 className="mt-4 text-4xl sm:text-5xl font-light tracking-wide leading-tight">
+              Crafting Wedding <br /> Memories That Last Forever
             </h2>
 
-            <p className="mt-8 text-gray-600 leading-7 max-w-xl">
-              Prince Studios boasts over 7+ years of experience capturing some of
-              life's most precious moments. Specializing in baby, newborn,
-              maternity, event, pre-wedding, and product photography, we have a
-              talent for creating stunning, timeless images that will be
-              cherished for years to come.
+            <div className="w-20 h-[2px] bg-amber-500 mt-6" />
+
+            <p className="mt-8 text-gray-700 leading-8 max-w-xl">
+              With over 7 years of experience, Prince Photography specializes in
+              capturing timeless wedding stories filled with emotion, elegance,
+              and beauty. From intimate candid moments to grand cinematic
+              celebrations, we document love in its purest form.
             </p>
 
-            <p className="mt-6 text-gray-600 leading-7 max-w-xl">
-              With a keen eye for detail and a passion for their craft, our team
-              of skilled photographers brings a unique and personalized approach
-              to every shoot.
+            <p className="mt-6 text-gray-700 leading-8 max-w-xl">
+              Our team blends creativity with storytelling, ensuring each wedding
+              film and photograph feels personal, cinematic, and unforgettable.
             </p>
 
-            {/* ✅ Read more button (same ring animation) */}
+            {/* Premium Button */}
             <div className="mt-12">
               <Link
                 to="/about"
@@ -67,26 +63,25 @@ const AboutSection = () => {
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
               >
-                READ MORE
+                Discover More
+                <span className="glowPulse" />
 
-                {/* ✅ OUTER thin ring */}
                 <span className="ringSvg ringOuter">
-                  <svg viewBox="0 0 240 80" preserveAspectRatio="none">
+                  <svg viewBox="0 0 240 80">
                     <ellipse
                       cx="120"
                       cy="40"
                       rx="110"
                       ry="30"
                       fill="none"
-                      stroke="rgba(0,0,0,0.35)"
-                      strokeWidth="1.5"
+                      stroke="rgba(0,0,0,0.25)"
+                      strokeWidth="1.2"
                     />
                   </svg>
                 </span>
 
-                {/* ✅ INNER ring animated */}
                 <span className="ringSvg ringInner">
-                  <svg viewBox="0 0 240 80" preserveAspectRatio="none">
+                  <svg viewBox="0 0 240 80">
                     <ellipse
                       className={hovered ? "dashAnim" : ""}
                       cx="120"
@@ -94,8 +89,8 @@ const AboutSection = () => {
                       rx="100"
                       ry="26"
                       fill="none"
-                      stroke="rgba(0,0,0,0.95)"
-                      strokeWidth="2.5"
+                      stroke="#000"
+                      strokeWidth="2"
                       strokeLinecap="round"
                     />
                   </svg>
@@ -106,54 +101,50 @@ const AboutSection = () => {
         </div>
       </div>
 
-      {/* ✅ CSS */}
       <style>{`
-        .readMoreBtn{
-          position:relative;
-          display:inline-flex;
-          align-items:center;
-          justify-content:center;
-          padding:12px 34px;
-          border-radius:999px;
-          font-size:11px;
-          letter-spacing:0.35em;
-          text-transform:uppercase;
-          color:#000;
-          font-weight:500;
-          transition:transform .25s ease;
+        .readMoreBtn {
+          position: relative;
+          padding: 14px 40px;
+          border-radius: 999px;
+          font-size: 11px;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          color: #000;
+          font-weight: 500;
+          transition: transform .3s ease;
         }
 
-        .readMoreBtn:hover{
-          transform:translateY(-2px);
+        .readMoreBtn:hover { transform: scale(1.05); }
+
+        .glowPulse {
+          position: absolute;
+          inset: 0;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(0,0,0,0.08) 0%, transparent 70%);
+          animation: pulseGlow 2.5s ease-in-out infinite;
+          z-index: -1;
         }
 
-        .ringSvg{
-          position:absolute;
-          inset:-28px;
-          pointer-events:none;
+        @keyframes pulseGlow {
+          0% { opacity: .2; transform: scale(.95); }
+          50% { opacity: .5; transform: scale(1.05); }
+          100% { opacity: .2; transform: scale(.95); }
         }
 
-        .ringOuter{
-          inset:-34px;
-        }
+        .ringSvg { position: absolute; inset: -30px; pointer-events: none; }
+        .ringOuter { inset: -36px; }
 
-        .ringSvg svg{
-          width:100%;
-          height:100%;
-        }
+        .ringSvg svg { width: 100%; height: 100%; }
 
-        /* ✅ EXACT wipe animation */
-        .dashAnim{
+        .dashAnim {
           stroke-dasharray: 480;
-          stroke-dashoffset: 0;
-          animation: wipeLine 1.3s ease-in-out infinite;
+          animation: wipeLine 1.4s ease-in-out infinite;
         }
 
-        @keyframes wipeLine{
-          0%   { stroke-dashoffset: 0; opacity:1; }
-          60%  { stroke-dashoffset: 420; opacity:1; }
-          90%  { opacity:0; }
-          100% { stroke-dashoffset: 0; opacity:1; }
+        @keyframes wipeLine {
+          0% { stroke-dashoffset: 0; }
+          60% { stroke-dashoffset: 420; }
+          100% { stroke-dashoffset: 0; }
         }
       `}</style>
     </section>

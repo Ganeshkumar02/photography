@@ -1,73 +1,111 @@
 import React from "react";
 
-const posts = [
-  {
-    image: "/Portfolioimg/img2.jpg",
-    likes: "19 likes",
-    caption:
-      "She wears motherhood like a crown, glowing with love!\n\n#princestudios #photography #photo #maternityphotography #maternityshoot",
-  },
-  {
-    image: "/Portfolioimg/img3.jpg",
-    likes: "30 likes",
-    caption:
-      "Holding hands, chasing sunsets, writing our forever!\n\n#princestudios #photography #prewedding #couplephotography",
-  },
-  {
-    image: "/Portfolioimg/img4.jpg",
-    likes: "21 likes",
-    caption:
-      "One-derful Year! Look who's turning ONE with smiles, sunshine, and a heart full of joy!\n\n#princestudios #photography #babyshoot",
-  },
+const images = [
+  "/Portfolioimg/img2.jpg",
+  "/Portfolioimg/img3.jpg",
+  "/Portfolioimg/img4.jpg",
+  "/Portfolioimg/img5.jpg",
+  "/Portfolioimg/img6.jpg",
+  "/Portfolioimg/img7.jpg",
 ];
 
 const InstagramCollection = () => {
   return (
-    <section className="w-full bg-white py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <p className="text-[10px] tracking-[0.4em] uppercase text-gray-700">
-            EVERY FRAME TELLS A STORY
-          </p>
-          <h2 className="mt-3 text-2xl sm:text-4xl font-serif uppercase tracking-wide">
-            EXPLORE OUR INSTAGRAM COLLECTION
-          </h2>
-        </div>
+    <section className="w-full bg-[#faf7f2] py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 text-center mb-20">
+        <p className="text-xs tracking-[0.35em] uppercase text-gray-600">
+          Behind The Scenes of Love
+        </p>
+        <h2 className="mt-4 text-4xl sm:text-5xl text-gray-900 font-light tracking-wide">
+          Our Wedding Stories
+        </h2>
+        <div className="w-20 h-[2px] bg-amber-500 mx-auto mt-5" />
+      </div>
 
-        {/* ✅ Insta Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center">
-          {posts.map((post, idx) => (
-            <InstagramCard key={idx} post={post} />
+      {/* 🎞️ Moving Film Strip */}
+      <div className="filmWrapper">
+        <div className="filmTrack">
+          {[...images, ...images].map((img, i) => (
+            <div key={i} className="filmFrame">
+              <img src={img} alt="" />
+            </div>
           ))}
-        </div>
-
-        {/* Follow button */}
-        <div className="mt-14 flex justify-center">
-          <a
-            href="https://instagram.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="followBtn"
-          >
-            Follow on Instagram
-          </a>
         </div>
       </div>
 
-      {/* CSS */}
+      {/* CTA */}
+      <div className="mt-20 flex justify-center">
+        <a
+          href="https://instagram.com/"
+          target="_blank"
+          rel="noreferrer"
+          className="instaBtn"
+        >
+          Follow Our Journey
+        </a>
+      </div>
+
       <style>{`
-        .followBtn{
-          background:#1877f2;
-          color:#fff;
-          padding:12px 28px;
-          border-radius:6px;
-          font-size:13px;
-          font-weight:600;
-          transition:.2s ease;
+        .filmWrapper {
+          overflow: hidden;
+          width: 100%;
         }
-        .followBtn:hover{
-          opacity:.9;
+
+        .filmTrack {
+          display: flex;
+          gap: 30px;
+          animation: scrollFilm 45s linear infinite;
+        }
+
+        .filmFrame {
+          flex: 0 0 auto;
+          width: 260px;
+          height: 360px;
+          border-radius: 18px;
+          overflow: hidden;
+          position: relative;
+          box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+          transform: rotate(-2deg);
+          transition: transform .4s ease;
+          background: #fff;
+        }
+
+        .filmFrame:nth-child(even) {
+          transform: rotate(2deg);
+        }
+
+        .filmFrame:hover {
+          transform: rotate(0deg) scale(1.05);
+          z-index: 5;
+        }
+
+        .filmFrame img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        @keyframes scrollFilm {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        .instaBtn {
+          padding: 14px 40px;
+          border-radius: 999px;
+          border: 1px solid #000;
+          font-size: 12px;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          color: #000;
+          transition: all .3s ease;
+          background: transparent;
+        }
+
+        .instaBtn:hover {
+          background: #000;
+          color: #fff;
+          transform: scale(1.05);
         }
       `}</style>
     </section>
@@ -75,63 +113,3 @@ const InstagramCollection = () => {
 };
 
 export default InstagramCollection;
-
-/* ✅ Instagram UI Card */
-const InstagramCard = ({ post }) => {
-  return (
-    <div className="w-[310px] border border-gray-300 bg-white">
-      {/* Header */}
-      <div className="flex items-center justify-between px-3 py-2 border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-gray-300 overflow-hidden" />
-          <div className="text-[11px] leading-tight">
-            <p className="font-semibold">princestudios</p>
-            <p className="text-gray-500">Mirzapur, India</p>
-          </div>
-        </div>
-        <button className="bg-[#1877f2] text-white text-[11px] px-3 py-[6px] rounded">
-          View profile
-        </button>
-      </div>
-
-      {/* Image */}
-      <div className="w-full h-[340px] bg-gray-100">
-        <img
-          src={post.image}
-          alt="instagram"
-          className="w-full h-full object-cover object-top"
-          loading="lazy"
-        />
-      </div>
-
-      {/* View more link */}
-      <div className="px-3 pt-2">
-        <p className="text-[11px] text-blue-600 cursor-pointer">
-          View more on Instagram
-        </p>
-      </div>
-
-      {/* Actions */}
-      <div className="flex items-center gap-3 px-3 py-2">
-        <span className="text-lg cursor-pointer">♡</span>
-        <span className="text-lg cursor-pointer">💬</span>
-        <span className="text-lg cursor-pointer">↗</span>
-        <span className="ml-auto text-lg cursor-pointer">🔖</span>
-      </div>
-
-      {/* Likes + caption */}
-      <div className="px-3 pb-3">
-        <p className="text-[12px] font-semibold">{post.likes}</p>
-        <p className="text-[12px] mt-1 font-semibold">prince studios</p>
-        <p className="text-[12px] text-gray-800 whitespace-pre-line leading-5">
-          {post.caption}
-        </p>
-      </div>
-
-      {/* Comment box */}
-      <div className="border-t border-gray-200 px-3 py-2 text-[12px] text-gray-500">
-        Add a comment...
-      </div>
-    </div>
-  );
-};

@@ -5,123 +5,134 @@ const BookShootCTA = () => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="w-full bg-[#f5f3f0] py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch overflow-hidden">
-          {/* ✅ LEFT CONTENT */}
-          <div className="flex items-center justify-center py-20 px-6">
-            <div className="text-center max-w-md">
-              <h2 className="font-serif uppercase tracking-wide leading-[1.2] text-4xl sm:text-5xl">
-                BOOK YOUR <br /> SHOOT TODAY!
-              </h2>
+    <section className="w-full py-28 bg-gradient-to-b from-[#faf7f2] to-[#f1ede6]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
 
-              <p className="mt-6 text-gray-600 text-base">
-                Let us tell your story through our lens
-              </p>
+          {/* LEFT CONTENT */}
+          <div className="text-center lg:text-left">
+            <p className="text-xs tracking-[0.35em] uppercase text-gray-600">
+              Let’s Create Magic
+            </p>
 
-              {/* ✅ SAME RING BUTTON */}
-              <div className="mt-10 flex justify-center">
-                <Link
-                  to="/contact"
-                  className="ringBtn"
-                  onMouseEnter={() => setHovered(true)}
-                  onMouseLeave={() => setHovered(false)}
-                >
-                  BOOK A SHOOT
+            <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light leading-tight">
+              Book Your Wedding <br /> Shoot Today
+            </h2>
 
-                  {/* OUTER thin ring */}
-                  <span className="ringSvg ringOuter">
-                    <svg viewBox="0 0 240 80" preserveAspectRatio="none">
-                      <ellipse
-                        cx="120"
-                        cy="40"
-                        rx="110"
-                        ry="30"
-                        fill="none"
-                        stroke="rgba(0,0,0,0.45)"
-                        strokeWidth="1.5"
-                      />
-                    </svg>
-                  </span>
+            <div className="w-20 h-[2px] bg-amber-500 mt-6 mx-auto lg:mx-0" />
 
-                  {/* INNER thick ring (animated) */}
-                  <span className="ringSvg ringInner">
-                    <svg viewBox="0 0 240 80" preserveAspectRatio="none">
-                      <ellipse
-                        className={hovered ? "dashAnim" : ""}
-                        cx="120"
-                        cy="40"
-                        rx="100"
-                        ry="26"
-                        fill="none"
-                        stroke="rgba(0,0,0,0.95)"
-                        strokeWidth="2.4"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-              </div>
+            <p className="mt-8 text-gray-700 max-w-lg leading-8">
+              Your love story deserves to be captured in the most beautiful,
+              cinematic way. Let us turn your special moments into timeless
+              memories.
+            </p>
+
+            {/* PREMIUM BUTTON */}
+            <div className="mt-12">
+              <Link
+                to="/contact"
+                className="premiumBtn"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+              >
+                Book Your Date
+
+                <span className="glow" />
+
+                {/* Outer Ring */}
+                <span className="ringSvg ringOuter">
+                  <svg viewBox="0 0 240 80">
+                    <ellipse
+                      cx="120"
+                      cy="40"
+                      rx="110"
+                      ry="30"
+                      fill="none"
+                      stroke="rgba(0,0,0,0.3)"
+                      strokeWidth="1.2"
+                    />
+                  </svg>
+                </span>
+
+                {/* Animated Ring */}
+                <span className="ringSvg ringInner">
+                  <svg viewBox="0 0 240 80">
+                    <ellipse
+                      className={hovered ? "dashAnim" : ""}
+                      cx="120"
+                      cy="40"
+                      rx="100"
+                      ry="26"
+                      fill="none"
+                      stroke="#000"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </Link>
             </div>
           </div>
 
-          {/* ✅ RIGHT IMAGE */}
-          <div className="w-full h-[420px] sm:h-[520px] lg:h-[600px] overflow-hidden">
+          {/* RIGHT IMAGE */}
+          <div className="relative overflow-hidden rounded-xl shadow-xl">
             <img
-              src="/Portfolioimg/img6.jpg" // ✅ change image
+              src="/Portfolioimg/img6.jpg"
               alt="Book shoot"
-              className="w-full h-full object-cover object-center"
-              loading="lazy"
-              decoding="async"
+              className="w-full h-[520px] object-cover object-center scale-105 hover:scale-110 transition duration-700"
             />
+            <div className="absolute inset-0 bg-black/10" />
           </div>
         </div>
       </div>
 
-      {/* ✅ CSS */}
       <style>{`
-        .ringBtn{
-          position:relative;
-          display:inline-flex;
-          align-items:center;
-          justify-content:center;
-          padding:12px 34px;
-          border-radius:999px;
-          font-size:11px;
-          letter-spacing:0.35em;
-          text-transform:uppercase;
-          color:#000;
-          font-weight:500;
-          cursor:pointer;
+        .premiumBtn {
+          position: relative;
+          padding: 16px 46px;
+          border-radius: 999px;
+          font-size: 12px;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          color: #000;
+          font-weight: 500;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform .3s ease;
         }
 
-        .ringSvg{
-          position:absolute;
-          inset:-26px;
-          pointer-events:none;
+        .premiumBtn:hover { transform: scale(1.05); }
+
+        .glow {
+          position: absolute;
+          inset: 0;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(0,0,0,0.08) 0%, transparent 70%);
+          animation: glowPulse 2.5s ease-in-out infinite;
+          z-index: -1;
         }
 
-        .ringOuter{
-          inset:-32px;
+        @keyframes glowPulse {
+          0% { opacity: .2; transform: scale(.95); }
+          50% { opacity: .5; transform: scale(1.05); }
+          100% { opacity: .2; transform: scale(.95); }
         }
 
-        .ringSvg svg{
-          width:100%;
-          height:100%;
-        }
+        .ringSvg { position: absolute; inset: -30px; pointer-events: none; }
+        .ringOuter { inset: -36px; }
 
-        /* ✅ SAME wipe animation */
-        .dashAnim{
+        .ringSvg svg { width: 100%; height: 100%; }
+
+        .dashAnim {
           stroke-dasharray: 480;
-          stroke-dashoffset: 0;
-          animation: wipeLine 1.3s ease-in-out infinite;
+          animation: wipeLine 1.4s ease-in-out infinite;
         }
 
-        @keyframes wipeLine{
-          0%   { stroke-dashoffset: 0; opacity:1; }
-          60%  { stroke-dashoffset: 420; opacity:1; }
-          90%  { opacity:0; }
-          100% { stroke-dashoffset: 0; opacity:1; }
+        @keyframes wipeLine {
+          0% { stroke-dashoffset: 0; }
+          60% { stroke-dashoffset: 420; }
+          100% { stroke-dashoffset: 0; }
         }
       `}</style>
     </section>
