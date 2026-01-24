@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* ✅ Smooth text animation */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 1s ease forwards;
+}
+
+.animate-fadeUpDelay {
+  animation: fadeUp 1.2s ease forwards;
+}
