@@ -13,7 +13,7 @@ const founders = [
   },
   {
     name: "Prince Pal",
-    image: "/Founderimg/Ganesh.jpg",
+    image: "/Portfolioimg/img4.jpg",
     lines: ["Co-Founder – Prince Studios", "Growth & Revenue – GreatLearning"],
   },
 ];

@@ -23,13 +23,20 @@ import PreWedding from "./components/PhotographyServices/PreWedding";
 import HaldiMehndi from "./components/PhotographyServices/HaldiMehndi";
 import Reception from "./components/PhotographyServices/Reception";
 
+// About Us Page
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import { Home } from "lucide-react";
+import Packages from "./Pages/Packages/Packages";
+import Portfolio from "./Pages/Portfolio/Portfolio";
+import ContactUs from "./Pages/ContactUs/ContactUs";
+import BookYourDate from "./Pages/BookYourDate/BookYourDate";
+
 export default function App() {
   return (
     <>
       <Navbar />
 
       <Routes>
-
         {/* 🏠 HOMEPAGE */}
         <Route
           path="/"
@@ -58,6 +65,17 @@ export default function App() {
         <Route path="/services/pre-wedding" element={<PreWedding />} />
         <Route path="/services/haldi-mehndi" element={<HaldiMehndi />} />
         <Route path="/services/reception" element={<Reception />} />
+
+        {/* ℹ️ ABOUT US PAGE */}
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/book" element={<BookYourDate />} />
+
+
+
 
       </Routes>
 
