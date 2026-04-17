@@ -8,7 +8,7 @@ import PortfolioGallery from "./components/PortfolioGallery/PortfolioGallery";
 import StudioLocations from "./components/StudioLocations/StudioLocations";
 import PhotographyServices from "./components/PhotographyServices/PhotographyServices";
 import Testimonials from "./components/Testimonials/Testimonials";
-import MarqueeText from "./components/MarqueeText/MarqueeText";
+// import MarqueeText from "./components/MarqueeText/MarqueeText";
 import HeroPremium from "./components/HeroPremium/HeroPremium";
 import AboutSection from "./components/AboutSection/AboutSection";
 import MeetFounders from "./components/MeetFounders/MeetFounders";
@@ -48,7 +48,7 @@ export default function App() {
               <StudioLocations />
               <PhotographyServices />
               <Testimonials />
-              <MarqueeText />
+              {/* <MarqueeText /> */}
               <HeroPremium />
               <AboutSection />
               <MeetFounders />

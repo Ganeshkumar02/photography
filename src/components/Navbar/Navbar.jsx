@@ -12,80 +12,99 @@ const Navbar = () => {
     setOpenMenu(false);
   };
 
+  const navClass =
+    "relative text-[13px] tracking-[0.25em] font-medium text-gray-900 pb-1 group";
+
   return (
     <>
       <header className="w-full bg-white/90 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-20 flex items-center justify-between">
-
             {/* Logo */}
-                      <Link to="/" className="flex items-center">
-            <img
-              src="/Logo/1.png"
-              alt="Prince Photography"
-              className="h-18 w-auto object-contain"
-            />
-          </Link>
+            <Link to="/" className="flex items-center">
+              <img
+                src="/Logo/1.png"
+                alt="Prince Photography"
+                className="h-14 w-auto object-contain"
+              />
+            </Link>
 
-            {/* Desktop Menu */}
+            {/* Desktop */}
             <div className="hidden lg:flex items-center gap-8">
-
-              <Link to="/" className="navLink">HOME</Link>
-              <Link to="/portfolio" className="navLink">PORTFOLIO</Link>
-              <Link to="/packages" className="navLink">PACKAGES</Link>
-              <Link to="/about" className="navLink">ABOUT</Link>
+              {/* Nav Item */}
+              {["HOME", "PORTFOLIO", "PACKAGES", "ABOUT"].map((item, i) => (
+                <Link
+                  key={i}
+                  to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                  className={navClass}
+                >
+                  {item}
+                  <span className="absolute left-1/2 bottom-0 h-[1.5px] w-0 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                </Link>
+              ))}
 
               {/* Services */}
-              <div
-                className="relative"
-                onMouseEnter={() => {
-                  setOpenServices(true);
-                  setOpenLocations(false);
-                }}
-                onMouseLeave={() => setOpenServices(false)}
-              >
-                <button className="navLink flex items-center gap-2">
-                  SERVICES <span className="text-xs">▼</span>
+              <div className="relative group">
+                <button className={`${navClass} flex items-center gap-1`}>
+                  SERVICES ▼
+                  <span className="absolute left-1/2 bottom-0 h-[1.5px] w-0 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </button>
 
-                {openServices && (
-                  <div className="dropdown">
-                    <Link to="/services/wedding" className="dropItem">Wedding Photography</Link>
-                    <Link to="/services/prewedding" className="dropItem">Pre-Wedding Shoot</Link>
-                    <Link to="/services/cinematic" className="dropItem">Cinematic Films</Link>
-                    <Link to="/services/drone" className="dropItem">Drone Coverage</Link>
-                  </div>
-                )}
+                {/* Dropdown */}
+                <div
+                  className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden
+                opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                transition-all duration-300"
+                >
+                  {[
+                    "Wedding Photography",
+                    "Pre-Wedding Shoot",
+                    "Cinematic Films",
+                    "Drone Coverage",
+                  ].map((item, i) => (
+                    <Link
+                      key={i}
+                      to={`/services/${item.toLowerCase().replace(/ /g, "")}`}
+                      className="block px-4 py-3 text-sm text-gray-800 hover:bg-amber-50 hover:text-amber-600 transition"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                </div>
               </div>
-
               {/* Locations */}
-              <div
-                className="relative"
-                onMouseEnter={() => {
-                  setOpenLocations(true);
-                  setOpenServices(false);
-                }}
-                onMouseLeave={() => setOpenLocations(false)}
-              >
-                <button className="navLink flex items-center gap-2">
-                  LOCATIONS <span className="text-xs">▼</span>
+              <div className="relative group">
+                <button className={`${navClass} flex items-center gap-1`}>
+                  LOCATIONS ▼
+                  <span className="absolute left-1/2 bottom-0 h-[1.5px] w-0 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </button>
 
-                {openLocations && (
-                  <div className="dropdown">
-                    <Link to="/locations/delhi" className="dropItem">Delhi</Link>
-                    <Link to="/locations/mumbai" className="dropItem">Mumbai</Link>
-                    <Link to="/locations/jaipur" className="dropItem">Jaipur</Link>
-                  </div>
-                )}
+                <div
+                  className="absolute top-full left-0 w-48 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden
+    opacity-0 invisible group-hover:opacity-100 group-hover:visible
+    transition-all duration-300"
+                >
+                  {["Delhi", "Mumbai", "Jaipur"].map((city, i) => (
+                    <Link
+                      key={i}
+                      to={`/locations/${city.toLowerCase()}`}
+                      className="block px-4 py-3 text-sm text-gray-800 hover:bg-amber-50 hover:text-amber-600 transition"
+                    >
+                      {city}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
-              <Link to="/contact" className="navLink">CONTACT</Link>
+              <Link to="/contact" className={navClass}>
+                CONTACT
+                <span className="absolute left-1/2 bottom-0 h-[1.5px] w-0 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+              </Link>
 
-              {/* 🔥 CTA BUTTON */}
+              {/* CTA */}
               <Link
                 to="/book"
-                className="bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-5 py-2 rounded-full text-sm tracking-wider shadow-md hover:scale-105 transition"
+                className="ml-2 bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-5 py-2 rounded-full text-sm tracking-wider shadow-md hover:scale-105 transition"
               >
                 BOOK YOUR DATE
               </Link>
@@ -104,62 +123,52 @@ const Navbar = () => {
           {openMenu && (
             <div className="lg:hidden pb-6">
               <div className="flex flex-col gap-3 border-t pt-4 text-sm tracking-wider">
-                <Link onClick={closeAll} to="/">HOME</Link>
-                <Link onClick={closeAll} to="/portfolio">PORTFOLIO</Link>
-                <Link onClick={closeAll} to="/packages">PACKAGES</Link>
-                <Link onClick={closeAll} to="/about">ABOUT</Link>
-                <Link onClick={closeAll} to="/services/wedding">SERVICES</Link>
-                <Link onClick={closeAll} to="/contact">CONTACT</Link>
+                {["HOME", "PORTFOLIO", "PACKAGES", "ABOUT"].map((item, i) => (
+                  <Link
+                    key={i}
+                    onClick={closeAll}
+                    to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                  >
+                    {item}
+                  </Link>
+                ))}
 
-                <Link
-                  to="/book"
-                  onClick={closeAll}
-                  className="bg-yellow-500 text-white text-center py-2 rounded-full mt-2"
-                >
-                  BOOK YOUR DATE
+                <Link onClick={closeAll} to="/services/wedding">
+                  SERVICES
                 </Link>
+                <Link onClick={closeAll} to="/contact">
+                  CONTACT
+                </Link>
+
+       <Link
+  to="/book"
+  onClick={closeAll}
+  className="group perspective"
+>
+  <div className="relative w-[180px] h-[45px] transition-transform duration-500 transform-style-preserve-3d group-hover:rotate-y-180">
+
+    {/* Front */}
+    <div className="absolute inset-0 flex items-center justify-center
+      bg-yellow-500 text-white rounded-full font-semibold
+      backface-hidden">
+      BOOK YOUR DATE
+    </div>
+
+    {/* Back */}
+    <div className="absolute inset-0 flex items-center justify-center
+      bg-amber-600 text-white rounded-full font-semibold
+      rotate-y-180 backface-hidden">
+      BOOK NOW
+    </div>
+
+  </div>
+</Link>
               </div>
             </div>
           )}
         </nav>
-
-        <style>{`
-          .navLink {
-            font-size: 13px;
-            letter-spacing: .25em;
-            font-weight: 500;
-            color: #111;
-            position: relative;
-          }
-          .navLink:hover { color: #c59d5f; }
-
-          .dropdown {
-            position: absolute;
-            top: 100%;
-            margin-top: 12px;
-            left: 0;
-            width: 220px;
-            background: white;
-            border: 1px solid #eee;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border-radius: 10px;
-            overflow: hidden;
-          }
-
-          .dropItem {
-            display: block;
-            padding: 12px 14px;
-            font-size: 14px;
-            color: #111;
-          }
-          .dropItem:hover {
-            background: #faf7f2;
-            color: #c59d5f;
-          }
-        `}</style>
       </header>
 
-      {/* Spacer */}
       <div className="h-20" />
     </>
   );
