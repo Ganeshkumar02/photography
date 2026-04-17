@@ -1,111 +1,74 @@
-import React, { useEffect, useState } from "react";
+import Carousel from "react-bootstrap/Carousel";
 
 const slides = [
   {
-    title: "YOUR LOVE STORY",
-    subtitle: "CAPTURED FOREVER",
-    image: "/sliderimage/1.jpg",
+    title: "Your Love Story",
+    subtitle: "Captured Forever",
+    image: "/sliderimage/G1.jpg",
   },
-  // {
-  //   title: "CINEMATIC WEDDING",
-  //   subtitle: "FILMS & PHOTOGRAPHY",
-  //   image: "/sliderimage/slider2.jpg",
-  // },
-  // {
-  //   title: "EMOTIONS • MOMENTS • MEMORIES",
-  //   subtitle: "THAT LAST A LIFETIME",
-  //   image: "/sliderimage/slider3.jpg",
-  // },
+  {
+    title: "Cinematic Weddings",
+    subtitle: "Films & Photography",
+    image: "/sliderimage/G2.jpg",
+  },
+  {
+    title: "Real Emotions",
+    subtitle: "Pure Memories",
+    image: "/sliderimage/G4.jpg",
+  },
 ];
 
-const Hero = () => {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % slides.length);
-    }, 6000);
-
-    return () => clearInterval(timer);
-  }, []);
-
+function Hero() {
   return (
-    <section className="relative w-full h-[80vh] md:h-screen overflow-hidden">
+    <Carousel fade interval={5000} pause={false} controls indicators>
 
-      {/* Slides */}
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out
-              ${index === active ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-          >
-            {/* Image */}
-            <img
-              src={slide.image}
-              alt={slide.title}
-              loading="lazy"
-              className={`w-full h-full object-cover object-center 
-              transition-transform duration-[6000ms] ease-linear
-              ${index === active ? "scale-105" : "scale-100"}`}
-            />
+      {slides.map((slide, index) => (
+        <Carousel.Item key={index}>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
-          </div>
-        ))}
-      </div>
+          {/* Image */}
+          <img
+            src={slide.image}
+            alt={slide.title}
+            className="w-full h-[70vh] sm:h-[80vh] md:h-screen object-cover"
+          />
 
-      {/* Content */}
-      <div className="relative flex flex-col items-center justify-center text-center h-full px-6 text-white">
+          {/* Gradient */}
+          <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-black/60 to-transparent" />
 
-        <h1
-          key={slides[active].title}
-          className="uppercase tracking-[0.20em] font-light
-          text-2xl sm:text-3xl md:text-5xl animate-[fadeLuxury_1.4s_ease-out]"
-        >
-          {slides[active].title}
-        </h1>
+          {/* Caption */}
+          <Carousel.Caption className="!bottom-10 md:!bottom-20">
 
-        <p
-          key={slides[active].subtitle}
-          className="mt-5 uppercase tracking-[0.35em] font-light text-amber-400
-          text-lg sm:text-xl md:text-3xl animate-[fadeLuxury_1.8s_ease-out]"
-        >
-          {slides[active].subtitle}
-        </p>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-light">
+              {slide.title}
+            </h1>
 
-        {/* Buttons */}
-        <div className="mt-10 flex gap-6 flex-wrap justify-center">
-          <a
-            href="/portfolio"
-            className="px-7 py-3 rounded-full border border-white/60
-            backdrop-blur-md bg-white/10 tracking-wider text-sm
-            hover:bg-white hover:text-black transition-all duration-300"
-          >
-            VIEW PORTFOLIO
-          </a>
+            <p className="mt-2 text-sm sm:text-base md:text-lg text-gray-200">
+              {slide.subtitle}
+            </p>
 
-          <a
-            href="/book-your-date"
-            className="px-8 py-3 rounded-full tracking-wider text-sm
-            bg-gradient-to-r from-yellow-500 to-amber-600
-            shadow-xl hover:shadow-amber-500/40 hover:scale-105 transition-all duration-300"
-          >
-            BOOK YOUR DATE
-          </a>
-        </div>
-      </div>
+            <div className="mt-4 flex flex-wrap justify-center gap-3">
+              <a
+                href="/portfolio"
+                className="px-6 py-2 border border-white rounded-full text-sm hover:bg-white hover:text-black transition"
+              >
+                View Portfolio
+              </a>
 
-      {/* Progress Bar */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 w-48 h-0.5 bg-white/30 overflow-hidden rounded-full">
-        <div
-          key={active}
-          className="h-full bg-amber-400 animate-[slideProgress_6s_linear]"
-        />
-      </div>
-    </section>
+              <a
+                href="/book"
+                className="px-6 py-2 bg-amber-500 rounded-full text-sm hover:bg-amber-600 transition"
+              >
+                Book Now
+              </a>
+            </div>
+
+          </Carousel.Caption>
+
+        </Carousel.Item>
+      ))}
+
+    </Carousel>
   );
-};
+}
 
 export default Hero;
