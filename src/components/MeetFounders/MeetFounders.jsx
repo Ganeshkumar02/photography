@@ -3,17 +3,17 @@ import React from "react";
 const founders = [
   {
     name: "Ansh Pal",
-    image: "/Portfolioimg/img2.jpg",
+    image: "/Founderimg/img2.jpg",
     lines: ["Founder – Prince Studios", "Co-Founder – White Flames LLP"],
   },
   {
     name: "Bindra Raj Singh",
-    image: "/Portfolioimg/img3.jpg",
+    image: "/Founderimg/img3.jpg",
     lines: ["Co-Founder – Prince Studios", "Founder – Scale Delight"],
   },
   {
     name: "Prince Pal",
-    image: "/Portfolioimg/img4.jpg",
+    image: "/Founderimg/1.png",
     lines: ["Co-Founder – Prince Studios", "Growth & Revenue – GreatLearning"],
   },
 ];

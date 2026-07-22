@@ -4,7 +4,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 /* ================= IMAGES ================= */
 const ALL_IMAGES = Array.from(
   { length: 16 },
-  (_, i) => `/Portfolioimg/img${i + 1}.jpg`
+  (_, i) => `/Portfolioimg/Sunil${i + 1}.png`
 );
 
 const GRID_IMAGES = ALL_IMAGES.slice(0, 12);

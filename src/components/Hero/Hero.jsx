@@ -1,74 +1,177 @@
+
 import Carousel from "react-bootstrap/Carousel";
 
 const slides = [
   {
     title: "Your Love Story",
     subtitle: "Captured Forever",
-    image: "/sliderimage/G1.jpg",
-  },
-  {
-    title: "Cinematic Weddings",
-    subtitle: "Films & Photography",
-    image: "/sliderimage/G2.jpg",
-  },
-  {
-    title: "Real Emotions",
-    subtitle: "Pure Memories",
-    image: "/sliderimage/G4.jpg",
+    image: "/sliderimage/s4.jpg",
   },
 ];
 
 function Hero() {
   return (
-    <Carousel fade interval={5000} pause={false} controls indicators>
+    <section className="py-4 sm:py-6">
+      <Carousel
+        controls={false}
+        indicators={false}
+        interval={null}
+      >
+        {slides.map((slide, index) => (
+          <Carousel.Item key={index}>
+            <div className="relative">
 
-      {slides.map((slide, index) => (
-        <Carousel.Item key={index}>
+              {/* Image Wrapper */}
+              <div className="relative flex justify-center">
 
-          {/* Image */}
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="w-full h-[70vh] sm:h-[80vh] md:h-screen object-cover"
-          />
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="
+                    w-[95%]
+                    sm:w-[92%]
+                    md:w-[88%]
+                    lg:w-[83%]
+                    h-[55vh]
+                    sm:h-[65vh]
+                    md:h-[70vh]
+                    lg:h-[80vh]
+                    xl:h-[85vh]
+                    object-cover
+                    rounded-2xl
+                    lg:rounded-[30px]
+                    shadow-2xl
+                  "
+                />
 
-          {/* Gradient */}
-          <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-black/60 to-transparent" />
+                {/* Overlay */}
+                <div className="absolute inset-0 flex justify-center">
+                  <div
+                    className="
+                      w-[95%]
+                      sm:w-[92%]
+                      md:w-[88%]
+                      lg:w-[83%]
+                      h-full
+                      bg-black/45
+                      rounded-2xl
+                      lg:rounded-[30px]
+                    "
+                  />
+                </div>
 
-          {/* Caption */}
-          <Carousel.Caption className="!bottom-10 md:!bottom-20">
+                {/* Content */}
+                <div className="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6">
+                  <div className="max-w-4xl">
 
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-light">
-              {slide.title}
-            </h1>
+                    <span
+                      className="
+                        uppercase
+                        tracking-[3px]
+                        sm:tracking-[6px]
+                        text-white/80
+                        text-[10px]
+                        sm:text-xs
+                        md:text-sm
+                      "
+                    >
+                      Wedding Photography & Films
+                    </span>
 
-            <p className="mt-2 text-sm sm:text-base md:text-lg text-gray-200">
-              {slide.subtitle}
-            </p>
+                    <h1
+                      className="
+                        mt-4
+                        text-white
+                        text-3xl
+                        sm:text-5xl
+                        md:text-6xl
+                        lg:text-7xl
+                        xl:text-8xl
+                        font-light
+                        leading-tight
+                      "
+                    >
+                      {slide.title}
+                    </h1>
 
-            <div className="mt-4 flex flex-wrap justify-center gap-3">
-              <a
-                href="/portfolio"
-                className="px-6 py-2 border border-white rounded-full text-sm hover:bg-white hover:text-black transition"
-              >
-                View Portfolio
-              </a>
+                    <p
+                      className="
+                        mt-4
+                        text-gray-200
+                        text-sm
+                        sm:text-base
+                        md:text-lg
+                        lg:text-xl
+                        max-w-2xl
+                        mx-auto
+                      "
+                    >
+                      {slide.subtitle}
+                    </p>
 
-              <a
-                href="/book"
-                className="px-6 py-2 bg-amber-500 rounded-full text-sm hover:bg-amber-600 transition"
-              >
-                Book Now
-              </a>
+                    <div
+                      className="
+                        mt-8
+                        flex
+                        flex-col
+                        sm:flex-row
+                        justify-center
+                        items-center
+                        gap-4
+                      "
+                    >
+                      <a
+                        href="/portfolio"
+                        className="
+                          px-7
+                          sm:px-8
+                          py-3
+                          bg-white
+                          text-black
+                          rounded-full
+                          font-medium
+                          no-underline
+                          hover:scale-105
+                          transition-all
+                          duration-300
+                        "
+                      >
+                        View Portfolio
+                      </a>
+
+                      <a
+                        href="/book"
+                        className="
+                          px-7
+                          sm:px-8
+                          py-3
+                          border
+                          border-white
+                          text-white
+                          rounded-full
+                          no-underline
+                          hover:bg-white
+                          hover:text-black
+                          transition-all
+                          duration-300
+                        "
+                      >
+                        Book Now
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
             </div>
-
-          </Carousel.Caption>
-
-        </Carousel.Item>
-      ))}
-
-    </Carousel>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </section>
   );
 }
 
 export default Hero;
+

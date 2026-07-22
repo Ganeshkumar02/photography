@@ -1,30 +1,47 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
+  const navItems = ["HOME", "PORTFOLIO", "PACKAGES", "ABOUT"];
+
   const navClass =
-  "relative text-[13px] tracking-[0.25em] font-medium !text-black no-underline group";
+    "relative text-sm tracking-[0.18em] font-medium text-white no-underline group transition-all duration-300 hover:text-amber-400";
 
   const underline =
-    "absolute left-1/2 bottom-0 h-[1.5px] w-0 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0";
+    "absolute left-1/2 -bottom-1 h-[2px] w-0 bg-amber-500 transition-all duration-300 group-hover:w-full group-hover:left-0";
 
   return (
     <>
-      <header className="w-full bg-white/90 backdrop-blur-md border-b fixed top-0 left-0 z-50">
+      {/* Header */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-zinc-900/95 backdrop-blur-md shadow-md border-b border-zinc-800">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-20 flex items-center justify-between">
+
+          <div className="h-16 sm:h-20 flex items-center justify-between">
 
             {/* Logo */}
-            <Link to="/">
-              <img src="/Logo/1.png" alt="logo" className="h-14" />
+            <Link to="/" className="flex items-center">
+              <img
+                src="/Logo/1.png"
+                alt="Logo"
+                className="
+                  h-10
+                  sm:h-12
+                  md:h-14
+                  lg:h-16
+                  w-auto
+                  object-contain
+                "
+              />
             </Link>
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center gap-8">
 
-              {["HOME", "PORTFOLIO", "PACKAGES", "ABOUT"].map((item, i) => (
+              {navItems.map((item, i) => (
                 <Link
                   key={i}
                   to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
@@ -35,84 +52,145 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              {/* SERVICES (No dropdown) */}
-              <Link to="#" className={navClass}>
+              <Link to="/services" className={navClass}>
                 SERVICES
                 <span className={underline}></span>
               </Link>
 
-              {/* LOCATIONS (No dropdown) */}
-              <Link to="#" className={navClass}>
+              <Link to="/locations" className={navClass}>
                 LOCATIONS
                 <span className={underline}></span>
               </Link>
 
-              {/* Contact */}
               <Link to="/contact" className={navClass}>
                 CONTACT
                 <span className={underline}></span>
               </Link>
 
-              {/* CTA */}
               <Link
                 to="/book"
-                className="ml-2 bg-gradient-to-r from-yellow-500 to-orange-600 text-white px-5 py-2 rounded-full text-sm tracking-wider shadow-md hover:scale-105 transition no-underline"
+                className="
+                  ml-2
+                  bg-gradient-to-r
+                  from-amber-500
+                  to-orange-600
+                  text-white
+                  px-5
+                  py-2.5
+                  rounded-full
+                  text-sm
+                  font-medium
+                  tracking-wide
+                  shadow-lg
+                  hover:scale-105
+                  hover:shadow-orange-500/30
+                  transition-all
+                  duration-300
+                  no-underline
+                "
               >
                 BOOK YOUR DATE
               </Link>
             </div>
 
-            {/* Mobile Toggle */}
+            {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2 border rounded-md"
+              className="
+                lg:hidden
+                text-white
+                text-3xl
+                p-2
+              "
               onClick={() => setOpenMenu(!openMenu)}
             >
-              ☰
+              {openMenu ? <FiX /> : <FiMenu />}
             </button>
+
           </div>
 
           {/* Mobile Menu */}
-          {openMenu && (
-            <div className="lg:hidden pb-6">
-              <div className="flex flex-col gap-3 border-t pt-4 text-sm tracking-wider">
+          <div
+            className={`
+              lg:hidden
+              overflow-hidden
+              transition-all
+              duration-300
+              ${openMenu ? "max-h-[500px] pb-5" : "max-h-0"}
+            `}
+          >
+            <div className="bg-white rounded-2xl shadow-xl p-5 mb-4">
 
-                {["HOME", "PORTFOLIO", "PACKAGES", "ABOUT"].map((item, i) => (
+              <div className="flex flex-col gap-5">
+
+                {navItems.map((item, i) => (
                   <Link
                     key={i}
                     onClick={() => setOpenMenu(false)}
                     to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-                    className="no-underline text-gray-900"
+                    className="
+                      text-gray-800
+                      font-medium
+                      tracking-wider
+                      no-underline
+                      hover:text-orange-500
+                      transition
+                    "
                   >
                     {item}
                   </Link>
                 ))}
 
-                <Link to="#" className="text-gray-900 no-underline">
+                <Link
+                  to="/services"
+                  onClick={() => setOpenMenu(false)}
+                  className="text-gray-800 font-medium no-underline hover:text-orange-500"
+                >
                   SERVICES
                 </Link>
 
-                <Link to="#" className="text-gray-900 no-underline">
+                <Link
+                  to="/locations"
+                  onClick={() => setOpenMenu(false)}
+                  className="text-gray-800 font-medium no-underline hover:text-orange-500"
+                >
                   LOCATIONS
                 </Link>
 
-                <Link to="/contact" className="text-gray-900 no-underline">
+                <Link
+                  to="/contact"
+                  onClick={() => setOpenMenu(false)}
+                  className="text-gray-800 font-medium no-underline hover:text-orange-500"
+                >
                   CONTACT
                 </Link>
 
                 <Link
                   to="/book"
-                  className="bg-orange-500 !text-black visited:!text-white  px-4 py-2 rounded-full text-center"
+                  onClick={() => setOpenMenu(false)}
+                  className="
+                    bg-gradient-to-r
+                    from-amber-500
+                    to-orange-600
+                    text-white
+                    py-3
+                    rounded-full
+                    text-center
+                    font-semibold
+                    no-underline
+                  "
                 >
                   BOOK NOW
                 </Link>
 
               </div>
             </div>
-          )}
+          </div>
+
         </nav>
       </header>
 
-      <div className="h-20" />
+      {/* Spacer */}
+      <div className="h-16 sm:h-20"></div>
     </>
   );
 };

@@ -1,12 +1,12 @@
 import React from "react";
 
 const images = [
-  "/Portfolioimg/img2.jpg",
-  "/Portfolioimg/img3.jpg",
-  "/Portfolioimg/img4.jpg",
-  "/Portfolioimg/img5.jpg",
-  "/Portfolioimg/img6.jpg",
-  "/Portfolioimg/img7.jpg",
+  "/Portfolioimg/Sunil1.png",
+  "/Portfolioimg/Sunil2.png",
+  "/Portfolioimg/Sunil3.png",
+  "/Portfolioimg/Sunil4.png",
+  "/Portfolioimg/Sunil5.png",
+  "/Portfolioimg/Sunil6.png",
 ];
 
 const InstagramCollection = () => {
